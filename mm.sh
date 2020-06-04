@@ -24,6 +24,10 @@ do
         config.vm.provision "shell", inline: <<-SHELL 
           sudo apt-get update
           sudo apt-get -y install apache2
+          sudo apt-get -y install ufw
+          sudo ufw enable
+          sudo ufw allow from 0.0.0.0/0 to any port 80
+          sudo 
         SHELL
         end
 %EOF%
@@ -59,6 +63,9 @@ do
           sudo apt-get -y install mysql-server
           sudo useradd -m mysql-user
           sudo passwd mysql-user
+          sudo apt-get -y install ufw
+          sudo ufw enable
+          sudo ufw allow from 0.0.0.0/0 to any port 3306
         SHELL
         end
 
