@@ -32,7 +32,7 @@ do
     cat <<%EOF% >index.html
     <html>
         <body>
-            <h1>Loris Cagnazzo's LB2 ${vm}</h1>
+            <h1>Loris Cagnazzo's LB2! ${vm}</h1>
         </body>
     <html>
 %EOF%
