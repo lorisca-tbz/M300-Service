@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # LB2 Loris Cagnazzo
-#   - Erstellt mehrere VM's mit jeweils anderer Startseite (index.html).
-#
+#   - Erstellt zwei VM's mit jeweils anderer Startseite (index.html).
+#   - Erstellt zwei Datenbank VMs.
 #	Verwendetete Ports wie folgt abfragen:
 #	vagrant port
 
@@ -57,6 +57,8 @@ do
         config.vm.provision "shell", inline: <<-SHELL 
           sudo apt-get update
           sudo apt-get -y install mysql-server
+          sudo useradd -m mysql-user
+          sudo passwd mysql-user
         SHELL
         end
 
