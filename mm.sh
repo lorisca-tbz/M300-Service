@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# LB2 Aron Augsburger
+# LB2 Loris Cagnazzo
 #   - Erstellt mehrere VM's mit jeweils anderer Startseite (index.html).
 #
 #	Verwendetete Ports wie folgt abfragen:
@@ -49,14 +49,19 @@ do
     cat <<%EOF% >Vagrantfile
         Vagrant.configure(2) do |config|
           config.vm.box = "ubuntu/xenial64"
-          config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
-          config.vm.synced_folder ".", "/var/www/html"  
+          config.vm.network "forwarded_port", guest:3306, host:3306, auto_correct: true
+          config.vm.synced_folder ".", "/var/lib/mysql"  
         config.vm.provider "virtualbox" do |vb|
           vb.memory = "256"  
         end
         config.vm.provision "shell", inline: <<-SHELL 
           sudo apt-get update
-          sudo apt-get -y install apache2
+          sudo apt-get -y install mysql-server
         SHELL
         end
+
+%EOF%
+    vagrant up
+    cd ..
+
 done
