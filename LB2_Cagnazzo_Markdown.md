@@ -41,15 +41,35 @@ do
           config.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
           config.vm.synced_folder ".", "/var/www/html"  
         config.vm.provider "virtualbox" do |vb|
-          vb.memory = "256"  
+          vb.memory = "256"
         end
+```
+* Hier werden alle Einstellungen der VMs gemacht. Zuerst wird ein Update gemacht.
+* Mit `install apache2` wird der Webserver installiert.
+* Mit `install ufw` und `ufw enable` wird die Firewall installiert und aktiviert.
+* `ufw allow 0.0.0.0/0 to any port 80` erlaubt port 80 von überall aus. 
+```
         config.vm.provision "shell", inline: <<-SHELL 
           sudo apt-get update
           sudo apt-get -y install apache2
+          sudo apt-get -y install ufw
+          sudo ufw enable
+          sudo ufw allow from 0.0.0.0/0 to any port 80
+          sudo 
         SHELL
         end
-%EOF%
-$ ls -l
+```
+* Hier wird im `Index.html` File, einen Teil bearbeitet, mit einem Titel(`h1`).
+```
+# index.html 
+    cat <<%EOF% >index.html
+    <html>
+        <body>
+            <h1>Loris Cagnazzo's LB2! ${vm}</h1>
+        </body>
+    <html>
+```
+```
 
 ```
 

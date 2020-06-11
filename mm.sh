@@ -42,6 +42,7 @@ do
 %EOF%
     vagrant up
     cd ..
+done
     
 for vm in db01 db02
 do
