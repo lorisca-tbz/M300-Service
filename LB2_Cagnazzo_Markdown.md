@@ -1,9 +1,9 @@
 # LB2 Loris Cagnazzo
 ## Inhalstverzeichnis
 * Wissensgewinn (#Wissensgewinn)
-* Shellscrip Erklärung 
+* Shellscript Erklärung 
 * Shellscript bearbeiten
-* []Shellscript starten
+* Shellscript starten
 
 
 ## Wissensgewinn
@@ -13,7 +13,7 @@ Alle was in diesem Kapitel fest steht ***fett und kursiv** und jetzt wider norma
 * Github
   * Noch nie mit Github gearbeitet.
   * Eigenes Repository noch nie erstellt.
-  * 
+  * Auch Git
 * Vagrant
   * Einrücken
 
@@ -67,18 +67,56 @@ do
         <body>
             <h1>Loris Cagnazzo's LB2! ${vm}</h1>
         </body>
-    <html>
+    <html>   
 ```
+* Bei den Datenbank VMs ist alles gleich konfiguriert ausser einzelne Dinge.
+* `synced.folder` ist auf `var/lib/mysql` gesetzt und der Port ist natürlich auch anderst und auf `3306` gesetzt.
 ```
-
+    cat <<%EOF% >Vagrantfile
+        Vagrant.configure(2) do |config|
+          config.vm.box = "ubuntu/xenial64"
+          config.vm.network "forwarded_port", guest:3306, host:3306, auto_correct: true
+          config.vm.synced_folder ".", "/var/lib/mysql"  
+        config.vm.provider "virtualbox" do |vb|
+          vb.memory = "256"  
+        end
 ```
+* Mit `install mysql-server` wird der Datenbank server installiert.
+* Mit `useradd mysql-user` und `passwd` wird ein User erstellt und dem das eingegebene Passwort zugewiesen.
+* Die Firewall wird auch hier installiert und konfiguriert.
+* Mit einer Regel erlaubt von überall auf den Port 3306.
+```
+ config.vm.provision "shell", inline: <<-SHELL 
+          sudo apt-get update
+          sudo apt-get -y install mysql-server
+          sudo useradd -m mysql-user
+          sudo passwd mysql-user
+          sudo apt-get -y install ufw
+          sudo ufw enable
+          sudo ufw allow from 0.0.0.0/0 to any port 3306
+        SHELL
+        end
+```
+## Shellscript bearbeiten
+In Visual Studio Code den Ordner öffnen mit dem Script drin. In diesem Fall `C:\Users\Loris Cagnazzo\M300-Service`.
+Dann bearbeiten und sichern. Als nächstes wird ein Commit ausgeführt, wenn amn will noch ein Kommentar zur Änderung hinzufügen. Zuletzt noch auf das Git pushen.
+## Shellscript starten
+>cd M300-Service <br>
+>./mm.sh
 
-Code kann auch `so hervor gehoben` werden
+## Ergebnisse
+Die VMs wurden alle erstellt. Die befinden sich im M300-Services. `web01,web02, db01 & db02` sind alle hier.<br>
+![Ordner](ordner.png)
+[Zum Bild](https://ibb.co/92r6rLV)
 
-> Backquote
+* Hier sieht man den den `synced Folder` von `/var/www/html/`.
+![Synced-Folder](synced.png)
+[Zum Bild](https://ibb.co/pLFyrvz)
 
+So sieht das Vagrantfile einer Datenbank VM aus.
+![Synced-Folder](vgfiledb.png)
+[Zum Bild](https://ibb.co/6mk05y2)
 
-[1]: http://sbb.ch "sbb"
-[2]: http://tbz.ch "Technischen Berufsschule Zürich"
-
-Die meisten Lernenden der [TBZ][2] kommen mit der [Bahn][2] zur Schule
+So sieht das Vagrantfile des Webservers aus.
+![Synced-Folder](vgfilews.png)
+[Zum Bild](https://ibb.co/M9TWdTG)
