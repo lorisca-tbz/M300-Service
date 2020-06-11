@@ -28,8 +28,8 @@
 for vm in web01 web02
 do
 
-    mkdir ${vm} --> Erstellt ein Verzeichnis für die neuen Webserver-VMs.
-    cd ${vm} --> Wechselt in das neu erstellte Verzeichnis.
+    mkdir ${vm} 
+    cd ${vm} 
 ```
 * Mit `vagrant.vm.box` wird aus der Cloud eine Vagrant-Box benutzt, namens `ubuntu/xenial64`. 
 ```
