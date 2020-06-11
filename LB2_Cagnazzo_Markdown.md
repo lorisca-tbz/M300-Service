@@ -1,10 +1,10 @@
 # LB2 Loris Cagnazzo
 ## Inhalstverzeichnis
-* Wissensgewinn (#Wissensgewinn)
-* Shellscript Erklärung 
-* Shellscript bearbeiten
-* Shellscript starten
-* Ergebnisse
+* [Wissensgewinn](#Wissensgewinn)
+* [Shellscript Erklärung](#Shellscript-Erklärung)
+* [Shellscript bearbeiten](#Shellscript-bearbeiten)
+* [Shellscript starten](#Shellscript-starten)
+* [Ergebnisse](#Ergebnisse)
 
 
 ## Wissensgewinn
