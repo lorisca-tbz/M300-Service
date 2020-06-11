@@ -4,18 +4,22 @@
 * Shellscript Erklärung 
 * Shellscript bearbeiten
 * Shellscript starten
+* Ergebnisse
 
 
 ## Wissensgewinn
-
-Alle was in diesem Kapitel fest steht ***fett und kursiv** und jetzt wider normal.
 
 * Github
   * Noch nie mit Github gearbeitet.
   * Eigenes Repository noch nie erstellt.
   * Auch Git
 * Vagrant
-  * Einrücken
+  * Auch noch nie mit Vagrant gearbeitet.
+    * Vagrant up
+    * Vagrant ssh
+    * Vagrant destroy
+* Visual Studio Code
+  * Schon damit gearbeitet
 
 ## Shellscript Erklärung
 ---
