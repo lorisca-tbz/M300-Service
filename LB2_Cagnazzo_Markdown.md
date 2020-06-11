@@ -4,7 +4,9 @@
 * [Shellscript Erklärung](#Shellscript-Erklärung)
 * [Shellscript bearbeiten](#Shellscript-bearbeiten)
 * [Shellscript starten](#Shellscript-starten)
+* [Security](#Security)
 * [Ergebnisse](#Ergebnisse)
+* [Fazit](#Fazit)
 
 
 ## Wissensgewinn
@@ -12,7 +14,7 @@
 * Github
   * Noch nie mit Github gearbeitet.
   * Eigenes Repository noch nie erstellt.
-  * Auch Git
+  * Auch Git-Befehle habe ich gelernt, auch wenn es auf Visual Studio Code einfacher ist
 * Vagrant
   * Auch noch nie mit Vagrant gearbeitet.
     * Vagrant up
@@ -20,6 +22,9 @@
     * Vagrant destroy
 * Visual Studio Code
   * Schon damit gearbeitet
+* Markdown File
+  * Am Anfang dachte ich es wäre Mühsam, es macht ziemlich Spass.
+
 
 ## Shellscript Erklärung
 ---
@@ -86,7 +91,7 @@ do
         end
 ```
 * Mit `install mysql-server` wird der Datenbank server installiert.
-* Mit `useradd mysql-user` und `passwd` wird ein User erstellt und dem das eingegebene Passwort zugewiesen.
+* Mit `useradd mysql-user` und  wird ein User erstellt.
 * Die Firewall wird auch hier installiert und konfiguriert.
 * Mit einer Regel erlaubt von überall auf den Port 3306.
 ```
@@ -94,7 +99,6 @@ do
           sudo apt-get update
           sudo apt-get -y install mysql-server
           sudo useradd -m mysql-user
-          sudo passwd mysql-user
           sudo apt-get -y install ufw
           sudo ufw enable
           sudo ufw allow from 0.0.0.0/0 to any port 3306
@@ -107,6 +111,15 @@ Dann bearbeiten und sichern. Als nächstes wird ein Commit ausgeführt, wenn amn
 ## Shellscript starten
 >cd M300-Service <br>
 >./mm.sh
+
+## Security
+* Alle VMs die im Internet stehen sollten gehärtet sein.
+* Der Zugriff auf Datenbanken sollte auf die nötigsten Netze beschränkt werden und die Administration nur von einem Bestimmten Netz erlaubt werden.
+ 
+* Die Sicherheit kann im Script ausgebaut werden damit es den eigenen Standards entspricht.
+* Dateinübertragungen sollten immer über eine Verschlüsselte Verbindung gemacht werden. 
+* Firewall ist so konfiguriert, dass `Port 80` offen ist für alle Webserver und `Port 3306` offen ist für alle Datenbankserver.
+* Mit SSH (Secure Shell) wird eine Verschlüsselte Verbindung zu einem entferneten Rechner oder System aufgebaut. Mit dieser verschlüsselten Verbindung kann auf die Commandline zugegriffen werden und Sicher auf anderen Systemen gearbeiet werden.
 
 ## Ergebnisse
 Die VMs wurden alle erstellt. Die befinden sich im M300-Services. `web01,web02, db01 & db02` sind alle hier.<br>
@@ -124,3 +137,6 @@ So sieht das Vagrantfile einer Datenbank VM aus.
 So sieht das Vagrantfile des Webservers aus.
 ![Synced-Folder](vgfilews.png)
 [Zum Bild](https://ibb.co/M9TWdTG)
+
+## Fazit
+Dieses Projekt half mir weiter, da ich bis jetzt noch nie mit Github oder Vagrant gearbeitet hatte. Am Anfang kam ich schlecht vorwärts, da ich noch Mühe hatte mit dem Verstehen von vercshiedenen Dinge, zum Beispiel wie man push ausführt oder was der Unterschied ist zwischen Push und Commit. Mit der Zeit probierte ich immer weiter und konnte immer mehr verstehen. 
