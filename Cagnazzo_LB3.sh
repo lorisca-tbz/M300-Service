@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest:8080, host:8080, auto_correct: true
   
   # Share an additional folder to the guest VM.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  # config.vm.synced_folder ".", "/vagrant/lb3"
 
   config.vm.provider "virtualbox" do |vb|
      vb.memory = "2048"
