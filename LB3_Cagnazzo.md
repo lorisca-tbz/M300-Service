@@ -199,7 +199,7 @@ echo "OSTicket VM gestoppt"
 
 * beide Container sind erfolgrecih erstellt worden und laufen. 
 
-* Mit der Adresse des Servers `192.168.122.13:8080/scp/` wird die Login Seite von OSTicket angezeigt. 
+* Mit der Adresse des Servers `192.168.122.15:8080/scp/` wird die Login Seite von OSTicket angezeigt. 
 ---
 
 
@@ -228,13 +228,13 @@ docker run -d -p 9000:9000 --privileged -v /var/run/docker.sock:/var/run/docker.
 
 ## Fazit
 
+* Mit Container können Umgebung in Sekunden schnelle auf jedem System repliziert werden und jeder kann dies Nutzen der auch Docker besitzt. Dies ist auch bei Forschungen sehr nützlich, da so jemand von China die Umgebung von einem Schweizer Forschungsteam in sekunden schnelle 1zu1 replizieren kann.
+
 * Mit Docker können wie mit Vagrant schnell Umgebungen Aufegabut werden. Diese Umgebung können selbst oder von anderen erstellt worden sein. 
 
 * Mit Docker sind die möglichekiten fast schon grenzenlos.
 
 * Bei Docker-Container die von anderen erstellt wurden kann es zu Problemen kommne um etwas im Imnage zu verstehen oder zu ändern.
-
-* Mit Container können Umgebung in Sekunden schnelle auf jedem System repliziert werden und jeder kann dies Nutzen der auch Docker besitzt. Dies ist auch bei Forschungen sehr nützlich, da so jemand von China die Umgebung von einem Schweizer Forschungsteam in sekunden schnelle 1zu1 replizieren kann. 
  
 
 ---
